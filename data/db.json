@@ -1,0 +1,59 @@
+{
+    "users": [
+        {
+            "id": 1,
+            "username": "admin@admin.com",
+            "password": "admin.1234"
+        }
+    ],
+    "products" : [
+        {
+            "id": 1,
+            "name" : "Pizza",
+            "price" : 10.00,
+            "description" : "Mantar, domates, sucuk, kaşar, biber, soğan"
+        },
+        {
+            "id": 2,
+            "name" : "Cheeseburger",
+            "price" : 12.00,
+            "description" : "Domates, salatalık, soğan, ketçap, mayonez, hardal, peynir, köfte, ekmek"
+        },
+        {
+            "id": 3,
+            "name" : "Double Cheeseburger",
+            "price" : 15.00,
+            "description" : "Domates, salatalık, soğan, ketçap, mayonez, hardal, peynir, köfte, ekmek"
+        },
+        {
+            "id": 4,
+            "name" : "Big Mac",
+            "price" : 20.00,
+            "description" : "Domates, salatalık, soğan, ketçap, mayonez, hardal, peynir, köfte, ekmek"
+        },
+        {
+            "id": 5,
+            "name" : "McChicken",
+            "price" : 15.00,
+            "description" : "Domates, salatalık, soğan, ketçap, mayonez, hardal, peynir, köfte, ekmek"
+        },
+        {
+            "id": 6,
+            "name" : "McChicken Deluxe",
+            "price" : 18.00,
+            "description" : "Domates, salatalık, soğan, ketçap, mayonez, hardal, peynir, köfte, ekmek"
+        },
+        {
+            "id": 7,
+            "name" : "McChicken Supreme",
+            "price" : 20.00,
+            "description" : "Domates, salatalık, soğan, ketçap, mayonez, hardal, peynir, köfte, ekmek"
+        },
+        {
+            "id": 8,
+            "name" : "McChicken Bacon",
+            "price" : 22.00,
+            "description" : "Domates, salatalık, soğan, ketçap, mayonez, hardal, peynir, köfte, ekmek"
+        }
+    ]
+}
