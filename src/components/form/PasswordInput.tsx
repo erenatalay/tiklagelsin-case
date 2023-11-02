@@ -3,6 +3,8 @@ import { StyleSheet, View, useColorScheme } from 'react-native'
 import { TextInput, TextInputProps, DefaultTheme } from 'react-native-paper';
 import ErrorText from './ErrorText';
 import Colors from '../../constant/Colors';
+import Ionicons from '@expo/vector-icons/Ionicons';
+
 interface InputProps extends TextInputProps {
     name: string
     touched?: boolean
@@ -10,7 +12,8 @@ interface InputProps extends TextInputProps {
     blur: (input: string) => void
     errors?: string
 }
-const Input: FC<InputProps> = (props) => {
+const PasswordInput: FC<InputProps> = (props) => {
+    const [isSecureTextEntry, setSecureTextEntry] = React.useState<boolean>(true);
     const { name, placeholder, left, keyboardType, value, changeText, blur, touched, secureTextEntry = false, errors } = props;
     const color = useColorScheme() ?? 'light';
     const theme = {
@@ -34,10 +37,14 @@ const Input: FC<InputProps> = (props) => {
                 placeholder={placeholder}
                 placeholderTextColor={Colors[color].textInputPlaceholder}
                 activeOutlineColor={Colors[color].textInputBackground}
-                secureTextEntry={secureTextEntry}
                 autoComplete='off'
+                secureTextEntry={isSecureTextEntry}
                 style={[styles.textInput, { height: props.multiline ? 60 : 30 }]}
                 mode={"outlined"}
+                right={<TextInput.Icon
+                    onPress={() => setSecureTextEntry(!isSecureTextEntry) }
+                    icon={isSecureTextEntry ? "eye" : "eye-off"} />
+                }
                 onChangeText={(text: string) => changeText(name, text)}
                 {...props}
             />
@@ -46,8 +53,8 @@ const Input: FC<InputProps> = (props) => {
     )
 }
 const styles = StyleSheet.create({
-    container :{
-        marginVertical : 10
+    container: {
+        marginVertical: 10
     },
     textInput: {
         paddingVertical: 15,
@@ -56,4 +63,4 @@ const styles = StyleSheet.create({
         justifyContent: "center",
     },
 })
-export default Input;
+export default PasswordInput;

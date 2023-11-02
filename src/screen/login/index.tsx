@@ -1,15 +1,18 @@
 import React from 'react'
-import { StatusBar, StyleSheet } from 'react-native';
+import { StyleSheet } from 'react-native';
 import { SafeAreaView, Text, View } from '../../components/theme/Theme';
-import Colors from '../../constant/Colors';
 import Input from '../../components/form/Input';
 import { useFormik } from 'formik';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 import Button from '../../components/form/Button';
+import { loginValidationSchema } from '../../validation/loginValidation';
+import Header from '../../components/header';
+import PasswordInput from '../../components/form/PasswordInput';
+import { useAppDispatch } from '../../hooks/useStore';
+import authDataSlice from '../../store/slice/authDataSlice';
 
 const Login = () => {
-
-
+  const dispatch = useAppDispatch()
   const {
     handleBlur,
     handleSubmit,
@@ -24,8 +27,9 @@ const Login = () => {
       password: "",
       email: ""
     },
-    // validationSchema :loginValidationSchema,
+    validationSchema: loginValidationSchema,
     onSubmit: (values) => {
+      dispatch(authDataSlice.loginSucceed({}))
     },
   });
   const _changeText = (field: string, text: string) => {
@@ -38,20 +42,14 @@ const Login = () => {
 
   return (
     <SafeAreaView style={styles.container}>
-      <View
-        lightColor={Colors.light.red}
-        darkColor={Colors.dark.red}
-        style={styles.header}>
-        <Text style={styles.title}>Tıkla Gelsin</Text>
-      </View>
-
+      <Header title={"Tıkla Gelsin"} />
       <KeyboardAwareScrollView
         keyboardDismissMode='on-drag'
         enableOnAndroid={true}
         keyboardShouldPersistTaps='handled'
         scrollToOverflowEnabled={true}
         enableAutomaticScroll={true}
-        contentContainerStyle={{ flexGrow: 1, justifyContent: "center" }}
+        contentContainerStyle={{ flexGrow: 1, marginVertical: 60, marginHorizontal: 15 }}
       >
         <Input
           blur={_blurText}
@@ -63,17 +61,16 @@ const Login = () => {
           touched={touched.email}
           errors={errors.email}
         />
-        <Input
+        <PasswordInput
           blur={_blurText}
           placeholder={"Şifre"}
           changeText={_changeText}
           value={values.password}
-          secureTextEntry={true}
           name={"password"}
           touched={touched.password}
           errors={errors.password}
         />
-    
+
       </KeyboardAwareScrollView>
 
       <Button
@@ -91,28 +88,18 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
   },
-  header: {
-    padding: 50,
-  },
-  title: {
-    color: "#FFF",
-    textAlign: "center",
-    fontSize: 30,
-    marginTop: 60
-  },
   button: {
-    width: "100%",
     paddingVertical: 15,
-    // backgroundColor: COLORS.primary,
     borderRadius: 20,
     marginRight: 20,
     justifyContent: "center",
     alignItems: "center",
-    marginVertical: 10
+    marginVertical: 20,
+    marginHorizontal: 15
   },
   textButton: {
-    // color: COLORS.white,
-    fontWeight: "500"
+    fontWeight: "500",
+    fontSize: 16,
   },
 
 

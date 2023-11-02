@@ -1,5 +1,6 @@
 import React from 'react'
-import { SafeAreaView, StatusBar, StyleSheet, Text } from 'react-native'
+import {  StatusBar, StyleSheet } from 'react-native'
+import { SafeAreaView, Text } from '../../components/theme/Theme'
 
 const LoadingScreen = () => {
     return (
@@ -17,7 +18,6 @@ const styles = StyleSheet.create({
     },
     logo: {
         fontSize : 35,
-        color : "white"
     }
 
 })

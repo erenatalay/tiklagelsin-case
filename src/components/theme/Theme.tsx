@@ -38,13 +38,11 @@ export function Text(props: TextProps) {
 export function View(props: ViewProps) {
     const { style, lightColor, darkColor, ...otherProps } = props;
     const backgroundColor = useThemeColor({ light: lightColor, dark: darkColor }, 'background');
-
     return <DefaultView style={[{ backgroundColor }, style]} {...otherProps} />;
 }
 
 export function SafeAreaView(props: ViewProps) {
     const { style, lightColor, darkColor, ...otherProps } = props;
     const backgroundColor = useThemeColor({ light: lightColor, dark: darkColor }, 'background');
-
     return <DefaultSafeAreaView style={[{ backgroundColor }, style]} {...otherProps} />;
 }

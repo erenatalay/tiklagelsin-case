@@ -1,5 +1,6 @@
 import React, { FC } from 'react'
-import { ButtonProps, StyleSheet, Text, TouchableOpacity, TextStyle, ViewStyle } from 'react-native'
+import { ButtonProps, StyleSheet, Text, TouchableOpacity, TextStyle, ViewStyle, useColorScheme } from 'react-native'
+import Colors from '../../constant/Colors'
 
 interface FormButtonProps extends ButtonProps {
     buttonStyle?: ViewStyle
@@ -10,10 +11,12 @@ interface FormButtonProps extends ButtonProps {
 }
 const Button: FC<FormButtonProps> = (props) => {
     const { title, buttonStyle, onPress, textStyle, icon, left, right } = props
+    const color = useColorScheme() ?? 'light';
+    
     return (
-        <TouchableOpacity  style={[styles.button, buttonStyle]} onPress={onPress} {...props}>
+        <TouchableOpacity  style={[styles.button, {backgroundColor : Colors[color].buttonBackground},buttonStyle]} onPress={onPress} {...props}>
             {left && icon}
-            <Text style={[styles.text, textStyle]}>{title}</Text>
+            <Text style={[styles.text, {color : Colors[color].buttonTextColor}, textStyle]}>{title}</Text>
             {right && icon}
         </TouchableOpacity>
     )
