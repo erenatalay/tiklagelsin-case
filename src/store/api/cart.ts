@@ -1,9 +1,6 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
-import { Product } from "../../@types/response/Products";
+import { Cart } from "../../@types/response/Cart";
 
-export interface GetProductsParams{
-  search: string;
-};
 
 export const cartApi = createApi({
   reducerPath: "cartApi",
@@ -11,9 +8,9 @@ export const cartApi = createApi({
     baseUrl: "http://localhost:3000",
   }),
   endpoints: (builder) => ({
-    getCart: builder.query<Product[], GetProductsParams>({
-      query: ({search}) => ({
-        url: `/products?q=${search}`,
+    getCart: builder.query<Cart[], void>({
+      query: () => ({
+        url: `/cart`,
         method: "GET",
       }),
     }),

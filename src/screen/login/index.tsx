@@ -78,7 +78,6 @@ const Login = () => {
       </KeyboardAwareScrollView>
 
       <Button
-        left={true}
         buttonStyle={isButtonDisabled ? styles.disableButton : styles.button}
         textStyle={styles.textButton}
         disabled={isButtonDisabled}

@@ -73,6 +73,13 @@
         }
     ],
     "cart" : [
-        
+        {
+            "id": 1,
+            "name" : "Pizza",
+            "price" : 10.00,
+            "quantity" : 1,
+            "description" : "Mantar, domates, sucuk, kaşar, biber, soğan",
+            "image" : "https://cdn.yemek.com/mnresize/1250/833/uploads/2022/03/ev-usulu-pizza-yemekcom.jpg"
+        }
     ]
 }
