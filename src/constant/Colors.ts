@@ -12,6 +12,11 @@ export default {
     textInputPlaceholder: "gray",
     buttonBackground: "#D6373C",
     buttonTextColor: "#fff",
+    title : "#D6373C",
+    cart : "#D6373C",
+    productListItem : "#D6373C",
+    description : "#fff",
+    productListItemTitle : "#fff",
   },
   dark: {
     text: "#fff",
@@ -24,5 +29,12 @@ export default {
     textInputPlaceholder: "gray",
     buttonBackground: "#D6373C",
     buttonTextColor: "#fff",
+    title : "#fff",
+    cart : "#fff",
+    description : "#fff",
+    productListItem : "#000",
+    productListItemTitle : "#fff",
+
+
   },
 };
