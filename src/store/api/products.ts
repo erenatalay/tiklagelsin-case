@@ -1,9 +1,7 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
-import { Product } from "../../@types/Products";
+import { Product } from "../../@types/response/Products";
+import { ProductSearch } from "../../@types/request/ProductSearch";
 
-export interface GetProductsParams{
-  search: string;
-};
 
 export const productsApi = createApi({
   reducerPath: "productsApi",
@@ -11,7 +9,7 @@ export const productsApi = createApi({
     baseUrl: "http://localhost:3000",
   }),
   endpoints: (builder) => ({
-    getProducts: builder.query<Product[], GetProductsParams>({
+    getProducts: builder.query<Product[], ProductSearch>({
       query: ({search}) => ({
         url: `/products?q=${search}`,
         method: "GET",

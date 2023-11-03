@@ -10,9 +10,10 @@ import Header from '../../components/header';
 import PasswordInput from '../../components/form/PasswordInput';
 import { useAppDispatch } from '../../hooks/useStore';
 import authDataSlice from '../../store/slice/authDataSlice';
+import { useLoginMutation } from '../../store/api/auth';
 
 const Login = () => {
-  const dispatch = useAppDispatch()
+  const [login] = useLoginMutation()
   const {
     handleBlur,
     handleSubmit,
@@ -29,7 +30,7 @@ const Login = () => {
     },
     validationSchema: loginValidationSchema,
     onSubmit: (values) => {
-      dispatch(authDataSlice.loginSucceed({}))
+      login(values)
     },
   });
   const _changeText = (field: string, text: string) => {

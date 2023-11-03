@@ -1,21 +1,25 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { PayloadAction, createSlice } from "@reduxjs/toolkit";
+import { User } from "../../@types/response/User";
 
 interface IAuthDataSlice {
   isSignedIn: boolean;
+  user : User
 }
 const initialState: IAuthDataSlice = {
   isSignedIn: false,
+  user : {} as User
 };
 
 const slice = createSlice({
   name: "user",
   initialState,
   reducers: {
-    loginSucceed: (state, action) => {
-      state.isSignedIn = true;
+    loginSucceed: (state, action : PayloadAction<boolean>) => {
+      console.log(action.payload)
+      state.isSignedIn = action.payload;
     },
-    loginFailed: (state, action) => {
-      state.isSignedIn = false;
+    setUser : (state,action : PayloadAction<User>) => {
+      state.user = action.payload
     }
   },
 });

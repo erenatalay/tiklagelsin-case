@@ -1,7 +1,7 @@
 import React, { FC } from 'react'
 import { Text, View } from '../theme/Theme'
 import { Image, StyleSheet, useColorScheme } from 'react-native'
-import { Product } from '../../@types/Products'
+import { Product } from '../../@types/response/Products'
 import Colors from '../../constant/Colors'
 import Button from '../form/Button'
 

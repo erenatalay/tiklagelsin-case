@@ -1,5 +1,5 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
-import { Product } from "../../@types/Products";
+import { Product } from "../../@types/response/Products";
 
 export interface GetProductsParams{
   search: string;
