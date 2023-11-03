@@ -6,8 +6,6 @@ import mainDataSlice from "../slice/mainDataSlice";
 
 export const cartApi = createApi({
   reducerPath: "cartApi",
-  refetchOnFocus: true,
-  refetchOnReconnect: false,
   baseQuery: fetchBaseQuery({
     baseUrl: "http://localhost:3000",
   }),
@@ -19,11 +17,6 @@ export const cartApi = createApi({
       }),
       async onQueryStarted(_, { queryFulfilled, dispatch }) {
         try {
-          dispatch(
-            cartApi.endpoints.getCart.initiate(undefined, {
-              forceRefetch: true,
-            })
-          )
           const result = await queryFulfilled;
           const total = result.data.reduce((acc, item) => {
             return acc + item.quantity * item.price;
@@ -44,7 +37,7 @@ export const cartApi = createApi({
       }),
       async onQueryStarted(_, { queryFulfilled, dispatch }) {
         try {
-          dispatch(cartDataSlice.increment())
+          await queryFulfilled;
           dispatch(
             cartApi.endpoints.getCart.initiate(undefined, {
               forceRefetch: true,
@@ -63,6 +56,7 @@ export const cartApi = createApi({
       }),
       async onQueryStarted(body, { dispatch, queryFulfilled }) {
         try {
+          await queryFulfilled;
           dispatch(
             cartApi.endpoints.getCart.initiate(undefined, {
               forceRefetch: true,
@@ -80,6 +74,7 @@ export const cartApi = createApi({
       }),
       async onQueryStarted(body, { dispatch, queryFulfilled }) {
         try {
+          await queryFulfilled;
           dispatch(cartDataSlice.decrement())
           dispatch(
             cartApi.endpoints.getCart.initiate(undefined, {
@@ -94,4 +89,4 @@ export const cartApi = createApi({
   }),
 });
 
-export const { useGetCartQuery, useAddCartMutation, useUpdateCartMutation,useDeleteCartMutation } = cartApi;
+export const { useGetCartQuery, useAddCartMutation, useUpdateCartMutation, useDeleteCartMutation } = cartApi;

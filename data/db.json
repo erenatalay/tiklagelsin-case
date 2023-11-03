@@ -65,5 +65,14 @@
       "image": "https://cdn.yemek.com/mnresize/1250/833/uploads/2019/06/cheeseburger-one-cikan-yemekcom.jpg"
     }
   ],
-  "cart": []
+  "cart": [
+    {
+      "id": 1,
+      "name": "Pizza",
+      "price": 10,
+      "description": "Mantar, domates, sucuk, kaşar, biber, soğan",
+      "image": "https://cdn.yemek.com/mnresize/1250/833/uploads/2022/03/ev-usulu-pizza-yemekcom.jpg",
+      "quantity": 2
+    }
+  ]
 }
