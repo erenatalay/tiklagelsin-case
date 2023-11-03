@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback, useMemo } from 'react';
 import Loading from './Loading';
 import SessionNavigation from '../../navigation/SessionNavigation';
 import { useAppSelector } from '../../hooks/useStore';
@@ -7,17 +7,13 @@ import { useLoginMutation } from '../../store/api/auth';
 import { useAsyncStorage } from '@react-native-async-storage/async-storage';
 const Splash = () => {
     const [loading, setLoading] = useState<boolean>(true)
-    const { getItem, setItem, removeItem } = useAsyncStorage('user');
+    const { getItem } = useAsyncStorage('user');
     const [authanticate] = useLoginMutation()
-
     const { isSignedIn } = useAppSelector(state => state.rootReducer.authReducer)
-
-
     const checkAuth = async () => {
         const user = await getItem();
         if (user) {
             const { email, password } = JSON.parse(user);
-            console.log(user)
             authanticate({ email, password });
         }
     }

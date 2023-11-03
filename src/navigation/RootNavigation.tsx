@@ -6,8 +6,9 @@ import ProductList from '../screen/product-list';
 import Cart from '../screen/cart';
 import Colors from '../constant/Colors';
 import Ionicons from '@expo/vector-icons/MaterialCommunityIcons';
-import { useAppDispatch } from '../hooks/useStore';
+import { useAppDispatch, useAppSelector } from '../hooks/useStore';
 import authDataSlice from '../store/slice/authDataSlice';
+import { Text, View } from '../components/theme/Theme';
 
 export type StackNavigationParamsList = {
     ProductList: undefined,
@@ -16,6 +17,7 @@ export type StackNavigationParamsList = {
 type RootNavigationProps = NavigationProp<StackNavigationParamsList>;
 const Stack = createStackNavigator<StackNavigationParamsList>();
 const RootNavigation = () => {
+    const { count } = useAppSelector(state => state.rootReducer.cartReducer);
     const dispatch = useAppDispatch();
     const navigation = useNavigation<RootNavigationProps>()
     const colorScheme = useColorScheme() ?? "light";
@@ -28,32 +30,37 @@ const RootNavigation = () => {
             <Stack.Navigator
             >
                 <Stack.Screen
-                  options={{
-                    title : "Ürün Listesi",
-                    headerTintColor : Colors[colorScheme].title,
-                    headerStyle : {
-                        shadowOpacity : 0
-                    },
-                    headerRight : () => (
-                        <Ionicons
-                            name={"cart"}
-                            size={25}
-                            color={Colors[colorScheme].icon}
-                            style={styles.cart}
-                            onPress={() => navigation.navigate("Cart")}
-                        />
-                    ),
-                    headerLeft : () => (
-                        <Ionicons
-                            name={"logout"}
-                            size={25}
-                            color={Colors[colorScheme].icon}
-                            style={styles.logout}
-                            onPress={() => handleLogout()}
-                        />
-                    ),
-                 
-                  }}
+                    options={{
+                        title: "Ürün Listesi",
+                        headerTintColor: Colors[colorScheme].title,
+                        headerStyle: {
+                            shadowOpacity: 0
+                        },
+                        headerRight: () => (
+                            <>
+                                <Text style={[styles.cartCount,{color : Colors[colorScheme].title}]}>{count}</Text>
+                                <Ionicons
+                                    name={"cart"}
+                                    size={25}
+                                    color={Colors[colorScheme].icon}
+                                    style={styles.cart}
+                                    onPress={() => navigation.navigate("Cart")}
+                                />
+
+                            </>
+
+                        ),
+                        headerLeft: () => (
+                            <Ionicons
+                                name={"logout"}
+                                size={25}
+                                color={Colors[colorScheme].icon}
+                                style={styles.logout}
+                                onPress={() => handleLogout()}
+                            />
+                        ),
+
+                    }}
                     name={"ProductList"}
                     component={ProductList}
                 />
@@ -61,12 +68,12 @@ const RootNavigation = () => {
                 <Stack.Screen
                     name={"Cart"}
                     options={{
-                        title : "Sepet",
-                        headerTintColor : Colors[colorScheme].title,
-                        headerStyle : {
-                            shadowOpacity : 0,
+                        title: "Sepet",
+                        headerTintColor: Colors[colorScheme].title,
+                        headerStyle: {
+                            shadowOpacity: 0,
                         },
-                        headerLeft : () => (
+                        headerLeft: () => (
                             <Ionicons
                                 name={"chevron-left"}
                                 size={35}
@@ -76,7 +83,7 @@ const RootNavigation = () => {
                             />
                         ),
                     }}
-                    
+
                     component={Cart}
                 />
 
@@ -85,14 +92,21 @@ const RootNavigation = () => {
     );
 }
 const styles = StyleSheet.create({
-  cart : {
-    marginRight : 10
-  },
-  logout : {
-    marginLeft : 10
-  },
-  back : {
-    marginLeft : 10
-  }
+    cart: {
+        marginRight: 10
+    },
+    logout: {
+        marginLeft: 10
+    },
+    back: {
+        marginLeft: 10
+    },
+    cartCount :{
+        position: "absolute",
+        right: 8,
+        top: 0,
+        fontWeight: "bold",
+        fontSize: 13
+    }
 });
 export default RootNavigation;

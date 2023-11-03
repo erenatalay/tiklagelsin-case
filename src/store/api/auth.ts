@@ -24,6 +24,7 @@ export const authApi = createApi({
             dispatch(mainDataSlice.error("Email yada şifre hatalı"))
             return
           }
+          
           const user = result.data[0];
           dispatch(authDataSlice.setUser(user))
           dispatch(authDataSlice.loginSucceed(true))

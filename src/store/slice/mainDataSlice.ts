@@ -1,7 +1,4 @@
 import { PayloadAction, createSlice } from "@reduxjs/toolkit";
-import { User } from "../../@types/response/User";
-import AsyncStorage from "@react-native-async-storage/async-storage";
-
 interface IMainDataSlice {
   error : boolean,
   message : string,

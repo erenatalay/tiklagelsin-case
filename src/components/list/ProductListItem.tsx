@@ -7,9 +7,10 @@ import Button from '../form/Button'
 
 interface ProductListItemProps {
     item: Product
+    onPress?: () => void
 }
 
-const ProductListItem: FC<ProductListItemProps> = ({ item }) => {
+const ProductListItem: FC<ProductListItemProps> = ({ item ,onPress}) => {
     const color = useColorScheme() ?? "light"
     return (
         <View style={[styles.container, { backgroundColor: Colors[color].productListItem }]}>
@@ -25,6 +26,7 @@ const ProductListItem: FC<ProductListItemProps> = ({ item }) => {
                 title={`${item.price}TL Sepete Ekle`}
                 buttonStyle={styles.button}
                 textStyle={styles.buttonText}
+                onPress={onPress}
             />
         </View>
     )

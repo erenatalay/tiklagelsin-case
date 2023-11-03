@@ -7,9 +7,11 @@ import { Cart } from '../../@types/response/Cart'
 
 interface ProductListItemProps {
     item: Cart
+    increment: () => void
+    decrement: () => void
 }
 
-const CardListItem: FC<ProductListItemProps> = ({ item }) => {
+const CardListItem: FC<ProductListItemProps> = ({ item,increment,decrement }) => {
     const color = useColorScheme() ?? "light"
     return (
         <View style={[styles.container, { backgroundColor: Colors[color].productListItem }]}>
@@ -25,7 +27,7 @@ const CardListItem: FC<ProductListItemProps> = ({ item }) => {
                     name={"plus"}
                     size={20}
                     color={"black"}
-                    onPress={() => { }}
+                    onPress={increment}
                     style={styles.plus}
                 />
                 <Text style={styles.quantity}>{item.quantity} Adet</Text>
@@ -33,7 +35,7 @@ const CardListItem: FC<ProductListItemProps> = ({ item }) => {
                     name={"minus"}
                     size={20}
                     color={"black"}
-                    onPress={() => { }}
+                    onPress={decrement}
                     style={styles.minus}
                 />
             </View>

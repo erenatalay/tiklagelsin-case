@@ -4,11 +4,24 @@ import SearchInput from '../../components/form/SearchInput'
 import { FlatList, StyleSheet } from 'react-native'
 import { useGetProductsQuery } from '../../store/api/products'
 import ProductListItem from '../../components/list/ProductListItem'
-import ErrorMessage from '../../components/error-message'
+import { Product } from '../../@types/response/Products'
+import { useAddCartMutation, useGetCartQuery, useUpdateCartMutation } from '../../store/api/cart'
 
 const ProductList = () => {
     const [searchValue, setSearchValue] = React.useState<string>('')
-    const { data } = useGetProductsQuery({ search: searchValue})
+    const { data } = useGetProductsQuery({ search: searchValue })
+    const { data: cart, refetch } = useGetCartQuery()
+    const [addCart] = useAddCartMutation()
+    const [updateCart] = useUpdateCartMutation()
+    const handleAddToCart = (item: Product) => {
+        refetch()
+        const cartItem = cart?.find(cartItem => cartItem.id === item.id)
+        if (cartItem) {
+            updateCart({ ...item, quantity: cartItem.quantity += 1 })
+            return
+        }
+        addCart({ ...item, quantity: 1 })
+    }
     return (
         <SafeAreaView style={styles.container}>
             <View style={styles.header}>
@@ -22,7 +35,9 @@ const ProductList = () => {
                 data={data}
                 keyExtractor={(item) => String(item.id)}
                 renderItem={({ item }) => (
-                   <ProductListItem item={item}/>
+                    <ProductListItem
+                        onPress={() => handleAddToCart(item)}
+                        item={item} />
                 )
                 }
             />
