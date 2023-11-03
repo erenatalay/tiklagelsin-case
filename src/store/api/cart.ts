@@ -5,13 +5,13 @@ export interface GetProductsParams{
   search: string;
 };
 
-export const productsApi = createApi({
-  reducerPath: "productsApi",
+export const cartApi = createApi({
+  reducerPath: "cartApi",
   baseQuery: fetchBaseQuery({
     baseUrl: "http://localhost:3000",
   }),
   endpoints: (builder) => ({
-    getProducts: builder.query<Product[], GetProductsParams>({
+    getCart: builder.query<Product[], GetProductsParams>({
       query: ({search}) => ({
         url: `/products?q=${search}`,
         method: "GET",
@@ -20,4 +20,4 @@ export const productsApi = createApi({
   }),
 });
 
-export const {useGetProductsQuery} = productsApi;
+export const {useGetCartQuery} = cartApi;

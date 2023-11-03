@@ -6,13 +6,15 @@ import { useGetProductsQuery } from '../../store/api/products'
 import ProductListItem from '../../components/list/ProductListItem'
 
 const ProductList = () => {
-    const { data } = useGetProductsQuery()
+    const [searchValue, setSearchValue] = React.useState<string>('')
+    const { data } = useGetProductsQuery({ search: searchValue})
     return (
         <SafeAreaView style={styles.container}>
             <View style={styles.header}>
                 <SearchInput
                     placeholder={"Arama Yap"}
-                    value=''
+                    onChangeText={(text) => setSearchValue(text)}
+                    value={searchValue}
                 />
             </View>
             <FlatList

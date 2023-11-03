@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useMemo } from 'react'
 import { StyleSheet } from 'react-native';
 import { SafeAreaView, Text, View } from '../../components/theme/Theme';
 import Input from '../../components/form/Input';
@@ -39,7 +39,10 @@ const Login = () => {
   const _blurText = (field: string) => {
     handleBlur(field);
   };
-
+  
+  const isButtonDisabled = useMemo(() => {
+    return values.email === '' || values.password === '';
+  }, [values.email, values.password]);
   return (
     <SafeAreaView style={styles.container}>
       <Header title={"Tıkla Gelsin"} />
@@ -75,8 +78,9 @@ const Login = () => {
 
       <Button
         left={true}
-        buttonStyle={styles.button}
+        buttonStyle={isButtonDisabled ? styles.disableButton : styles.button}
         textStyle={styles.textButton}
+        disabled={isButtonDisabled}
         title={"Giriş Yap"}
         onPress={() => handleSubmit()}
       />
@@ -96,6 +100,16 @@ const styles = StyleSheet.create({
     alignItems: "center",
     marginVertical: 20,
     marginHorizontal: 15
+  },
+  disableButton: {
+    paddingVertical: 15,
+    borderRadius: 20,
+    marginRight: 20,
+    justifyContent: "center",
+    alignItems: "center",
+    marginVertical: 20,
+    marginHorizontal: 15,
+    backgroundColor: "gray"
   },
   textButton: {
     fontWeight: "500",
