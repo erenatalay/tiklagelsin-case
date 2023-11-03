@@ -6,6 +6,8 @@ import ProductList from '../screen/product-list';
 import Cart from '../screen/cart';
 import Colors from '../constant/Colors';
 import Ionicons from '@expo/vector-icons/MaterialCommunityIcons';
+import { useAppDispatch } from '../hooks/useStore';
+import authDataSlice from '../store/slice/authDataSlice';
 
 export type StackNavigationParamsList = {
     ProductList: undefined,
@@ -14,7 +16,11 @@ export type StackNavigationParamsList = {
 
 const Stack = createStackNavigator<StackNavigationParamsList>();
 const RootNavigation = () => {
+    const dispatch = useAppDispatch();
     const colorScheme = useColorScheme() ?? "light";
+    const handleLogout = () => {
+        dispatch(authDataSlice.logout())
+    }
     return (
         <ThemeProvider value={colorScheme === "dark" ? DarkTheme : DefaultTheme}>
 
@@ -41,6 +47,7 @@ const RootNavigation = () => {
                             size={25}
                             color={Colors[colorScheme].title}
                             style={styles.logout}
+                            onPress={() => handleLogout()}
                         />
                     ),
                  

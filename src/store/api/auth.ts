@@ -3,6 +3,7 @@ import { User } from "../../@types/response/User";
 import { LoginRequest } from "../../@types/request/Login";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import authDataSlice from "../slice/authDataSlice";
+import mainDataSlice from "../slice/mainDataSlice";
 
 export const authApi = createApi({
   reducerPath: "authApi",
@@ -19,7 +20,8 @@ export const authApi = createApi({
         try {
           const result = await queryFulfilled;
           if (result.data.length === 0) {
-            authDataSlice.loginSucceed(false)
+            dispatch(authDataSlice.loginSucceed(false))
+            dispatch(mainDataSlice.error("Email yada şifre hatalı"))
             return
           }
           const user = result.data[0];
@@ -32,7 +34,7 @@ export const authApi = createApi({
       },
     }),
     authanticate: builder.query<User[], LoginRequest>({
-      query: ({email,password}) => ({
+      query: ({ email, password }) => ({
         url: `/users?email=${email}&password=${password}`,
         method: "GET",
       }),

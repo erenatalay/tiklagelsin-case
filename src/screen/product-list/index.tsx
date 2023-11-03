@@ -4,6 +4,7 @@ import SearchInput from '../../components/form/SearchInput'
 import { FlatList, StyleSheet } from 'react-native'
 import { useGetProductsQuery } from '../../store/api/products'
 import ProductListItem from '../../components/list/ProductListItem'
+import ErrorMessage from '../../components/error-message'
 
 const ProductList = () => {
     const [searchValue, setSearchValue] = React.useState<string>('')

@@ -1,5 +1,6 @@
 import { PayloadAction, createSlice } from "@reduxjs/toolkit";
 import { User } from "../../@types/response/User";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 interface IAuthDataSlice {
   isSignedIn: boolean;
@@ -15,14 +16,20 @@ const slice = createSlice({
   initialState,
   reducers: {
     loginSucceed: (state, action : PayloadAction<boolean>) => {
-      console.log(action.payload)
       state.isSignedIn = action.payload;
     },
     setUser : (state,action : PayloadAction<User>) => {
       state.user = action.payload
+    },
+    logout : (state) => {
+      state.isSignedIn = false
+      state.user = {} as User
+      AsyncStorage.removeItem('user')
     }
   },
 });
+
+
 
 export default {
     ...slice.actions,
