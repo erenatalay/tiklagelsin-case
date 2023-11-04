@@ -5,6 +5,8 @@ This README provides essential information for the tikla-gelsin-case.
 ## Login Information
 ### Email : admin@admin.com
 ### Password : admin.1234
+---
+
 ## Getting Started
 
 To run the project, use the following commands:
