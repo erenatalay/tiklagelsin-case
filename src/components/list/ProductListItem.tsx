@@ -3,7 +3,7 @@ import { Text, View } from '../theme/Theme'
 import { Image, StyleSheet, useColorScheme } from 'react-native'
 import { Product } from '../../@types/response/Products'
 import Colors from '../../constant/Colors'
-import Button from '../form/Button'
+import Button from '../form/Button/Button'
 
 interface ProductListItemProps {
     item: Product

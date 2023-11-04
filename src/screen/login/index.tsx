@@ -1,13 +1,13 @@
 import React, { useMemo } from 'react'
 import { StyleSheet } from 'react-native';
 import { SafeAreaView, Text, View } from '../../components/theme/Theme';
-import Input from '../../components/form/Input';
+import Input from '../../components/form/Input/Input';
 import { useFormik } from 'formik';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
-import Button from '../../components/form/Button';
+import Button from '../../components/form/Button/Button';
 import { loginValidationSchema } from '../../validation/loginValidation';
 import Header from '../../components/header';
-import PasswordInput from '../../components/form/PasswordInput';
+import PasswordInput from '../../components/form/PasswordInput/PasswordInput';
 import { useAppDispatch } from '../../hooks/useStore';
 import authDataSlice from '../../store/slice/authDataSlice';
 import { useLoginMutation } from '../../store/api/auth';

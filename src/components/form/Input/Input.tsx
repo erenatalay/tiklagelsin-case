@@ -1,8 +1,8 @@
 import React, { FC } from 'react'
 import { StyleSheet, View, useColorScheme } from 'react-native'
 import { TextInput, TextInputProps, DefaultTheme } from 'react-native-paper';
-import ErrorText from './ErrorText';
-import Colors from '../../constant/Colors';
+import ErrorText from '../ErrorText/ErrorText';
+import Colors from '../../../constant/Colors';
 interface InputProps extends TextInputProps {
     name: string
     touched?: boolean
@@ -26,6 +26,7 @@ const Input: FC<InputProps> = (props) => {
     return (
         <View style={styles.container}>
             <TextInput
+                testID='text-input'
                 theme={theme}
                 left={left}
                 value={value}

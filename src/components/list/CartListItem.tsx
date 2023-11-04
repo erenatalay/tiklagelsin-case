@@ -2,7 +2,7 @@ import React, { FC } from 'react'
 import { Text, View } from '../theme/Theme'
 import { Image, StyleSheet, useColorScheme } from 'react-native'
 import Colors from '../../constant/Colors'
-import IconButton from '../form/IconButton'
+import IconButton from '../form/IconButton/IconButton'
 import { Cart } from '../../@types/response/Cart'
 
 interface ProductListItemProps {

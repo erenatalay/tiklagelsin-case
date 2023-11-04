@@ -1,8 +1,8 @@
 import React, { FC } from 'react'
 import { StyleSheet, View, useColorScheme } from 'react-native'
 import { TextInput, TextInputProps, DefaultTheme } from 'react-native-paper';
-import ErrorText from './ErrorText';
-import Colors from '../../constant/Colors';
+import ErrorText from '../ErrorText/ErrorText';
+import Colors from '../../../constant/Colors';
 import Ionicons from '@expo/vector-icons/Ionicons';
 
 interface InputProps extends TextInputProps {
@@ -29,6 +29,7 @@ const PasswordInput: FC<InputProps> = (props) => {
     return (
         <View style={styles.container}>
             <TextInput
+                testID='password-input'
                 theme={theme}
                 left={left}
                 value={value}
@@ -42,7 +43,7 @@ const PasswordInput: FC<InputProps> = (props) => {
                 style={[styles.textInput, { height: props.multiline ? 60 : 30 }]}
                 mode={"outlined"}
                 right={<TextInput.Icon
-                    onPress={() => setSecureTextEntry(!isSecureTextEntry) }
+                    onPress={() => setSecureTextEntry(!isSecureTextEntry)}
                     icon={isSecureTextEntry ? "eye" : "eye-off"} />
                 }
                 onChangeText={(text: string) => changeText(name, text)}

@@ -14,7 +14,7 @@ const ErrorText : FC<PropsHelperText> = (props) => {
             {visible &&
             <HelperText type="error"
                 visible={visible}>
-                <Text>{props.error}</Text>
+                <Text testID="error-text">{props.error}</Text>
             </HelperText>
             }
         </>

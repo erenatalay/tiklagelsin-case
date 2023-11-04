@@ -10,7 +10,7 @@ interface IconButtonProps extends TouchableOpacityProps {
 const IconButton: FC<IconButtonProps> = (props) => {
     const { size, color, name } = props
     return (
-        <TouchableOpacity {...props}>
+        <TouchableOpacity testID='button-icon' {...props}>
             <Ionicons size={size} color={color} name={name} />
         </TouchableOpacity>
     )

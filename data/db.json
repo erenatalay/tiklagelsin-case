@@ -65,22 +65,5 @@
       "image": "https://cdn.yemek.com/mnresize/1250/833/uploads/2019/06/cheeseburger-one-cikan-yemekcom.jpg"
     }
   ],
-  "cart": [
-    {
-      "id": 1,
-      "name": "Pizza",
-      "price": 10,
-      "description": "Mantar, domates, sucuk, kaşar, biber, soğan",
-      "image": "https://cdn.yemek.com/mnresize/1250/833/uploads/2022/03/ev-usulu-pizza-yemekcom.jpg",
-      "quantity": 2
-    },
-    {
-      "id": 2,
-      "name": "Cheeseburger",
-      "price": 12,
-      "description": "Domates, salatalık, soğan, ketçap, mayonez, hardal, peynir, köfte, ekmek",
-      "image": "https://www.botanikcoffee.com/trex/assets/img/urunler/2173825646.jpg",
-      "quantity": 1
-    }
-  ]
+  "cart": []
 }

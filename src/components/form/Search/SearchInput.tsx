@@ -1,7 +1,7 @@
 import React, { FC } from 'react'
 import { StyleSheet, useColorScheme } from 'react-native';
 import { Searchbar, SearchbarProps, DefaultTheme, TextInput, TextInputProps } from 'react-native-paper'
-import Colors from '../../constant/Colors';
+import Colors from '../../../constant/Colors';
 
 interface SearchInputProps extends TextInputProps {
 
@@ -22,6 +22,7 @@ const SearchInput: FC<SearchInputProps> = (props) => {
     };
     return (
         <TextInput
+            testID="searchbar-input"
             theme={theme}
             left={<TextInput.Icon icon={"magnify"} />}
             style={styles.textInput}
@@ -34,13 +35,13 @@ const SearchInput: FC<SearchInputProps> = (props) => {
 }
 
 const styles = StyleSheet.create({
- textInput : {
+    textInput: {
         paddingVertical: 12,
         borderRadius: 64,
         height: 20,
         justifyContent: "center",
-        marginHorizontal : 15
- }
+        marginHorizontal: 15
+    }
 })
 
 export default SearchInput

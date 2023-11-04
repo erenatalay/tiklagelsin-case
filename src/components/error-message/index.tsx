@@ -33,7 +33,7 @@ const GlobalToast: FC = ({ children }: any) => {
             duration: 500,
             useNativeDriver: true,
         }).start();
-    }, [toast, fadeAnim]);
+    }, [toast]);
 
     useEffect(() => {
         setTimeout(() => {
