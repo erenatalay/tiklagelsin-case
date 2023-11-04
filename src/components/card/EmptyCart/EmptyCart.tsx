@@ -10,11 +10,12 @@ interface EmptyCardProps {
 
 const EmptyCard: FC<EmptyCardProps> = ({ onPress }) => {
     return (
-        <SafeAreaView style={styles.container}>
+        <SafeAreaView testID="empty-cart" style={styles.container}>
             <Image source={Images.emptyImage} style={styles.emptyImage} />
             <Text style={styles.title}>Sepetiniz Boş</Text>
             <Text style={styles.description}>Birşeyler eklemek için butona tıkla.</Text>
             <Button
+                testID='empty-cart-button'
                 buttonStyle={styles.button}
                 textStyle={styles.textButton}
                 title={"Alışverişe Başla"}
