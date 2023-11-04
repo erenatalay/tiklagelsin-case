@@ -4,11 +4,12 @@ import { LoginRequest } from "../../@types/request/Login";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import authDataSlice from "../slice/authDataSlice";
 import mainDataSlice from "../slice/mainDataSlice";
+import { BASE_URL } from "../../constant/ApiConfig";
 
 export const authApi = createApi({
   reducerPath: "authApi",
   baseQuery: fetchBaseQuery({
-    baseUrl: "http://localhost:3000",
+    baseUrl: BASE_URL,
   }),
   endpoints: (builder) => ({
     login: builder.mutation<User[], LoginRequest>({

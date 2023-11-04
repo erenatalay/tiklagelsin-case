@@ -14,7 +14,7 @@ export type StackNavigationParamsList = {
     ProductList: undefined,
     Cart: undefined,
 }
-type RootNavigationProps = NavigationProp<StackNavigationParamsList>;
+export type RootNavigationProps = NavigationProp<StackNavigationParamsList>;
 const Stack = createStackNavigator<StackNavigationParamsList>();
 const RootNavigation = () => {
     const { count } = useAppSelector(state => state.rootReducer.cartReducer);
@@ -38,7 +38,7 @@ const RootNavigation = () => {
                         },
                         headerRight: () => (
                             <>
-                                <Text style={[styles.cartCount,{color : Colors[colorScheme].title}]}>{count}</Text>
+                                {count !==0 && <Text style={[styles.cartCount,{color : Colors[colorScheme].title}]}>{count}</Text>}
                                 <Ionicons
                                     name={"cart"}
                                     size={25}

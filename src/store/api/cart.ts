@@ -1,13 +1,14 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 import { Cart } from "../../@types/response/Cart";
 import cartDataSlice from "../slice/cartDataSlice";
-import mainDataSlice from "../slice/mainDataSlice";
+import { BASE_URL } from "../../constant/ApiConfig";
 
 
 export const cartApi = createApi({
   reducerPath: "cartApi",
+  refetchOnFocus: true,
   baseQuery: fetchBaseQuery({
-    baseUrl: "http://localhost:3000",
+    baseUrl: BASE_URL,
   }),
   endpoints: (builder) => ({
     getCart: builder.query<Cart[], void>({
@@ -18,12 +19,18 @@ export const cartApi = createApi({
       async onQueryStarted(_, { queryFulfilled, dispatch }) {
         try {
           const result = await queryFulfilled;
-          const total = result.data.reduce((acc, item) => {
-            return acc + item.quantity * item.price;
-          }, 0)
           const length = result.data?.length
+          const total = result.data.reduce((acc, item) => {
+            if (length > 1) {
+              return (acc + item.price * item.quantity * 0.7)
+            } else {
+              return acc + item.price * item.quantity
+            }
+          }, 0)
           dispatch(cartDataSlice.setCount(length))
-          dispatch(cartDataSlice.setTotal(total))
+          dispatch(cartDataSlice.setTotal(Number(total.toFixed(2))))
+          dispatch(cartDataSlice.setRegularTotal(Number((total / 0.7).toFixed(2))))
+
         } catch (err) {
           console.log(err);
         }

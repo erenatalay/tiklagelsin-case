@@ -3,10 +3,12 @@ import { PayloadAction, createSlice } from "@reduxjs/toolkit";
 interface ICartDataSlice {
     count: number
     total: number
+    regularTotal: number
 }
 const initialState: ICartDataSlice = {
     count: 0,
-    total: 0
+    total: 0,
+    regularTotal: 0,
 };
 const slice = createSlice({
     name: "cart",
@@ -17,6 +19,9 @@ const slice = createSlice({
         },
         setTotal: (state, action: PayloadAction<number>) => {
             state.total = action.payload;
+        },
+        setRegularTotal: (state, action: PayloadAction<number>) => {
+            state.regularTotal = action.payload;
         },
         increment: (state) => {
             state.count += 1;

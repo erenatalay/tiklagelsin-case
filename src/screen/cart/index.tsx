@@ -1,5 +1,5 @@
 import React, { useCallback } from 'react'
-import { SafeAreaView } from '../../components/theme/Theme'
+import { SafeAreaView, Text } from '../../components/theme/Theme'
 import { useDeleteCartMutation, useGetCartQuery, useUpdateCartMutation } from '../../store/api/cart'
 import { FlatList, StyleSheet } from 'react-native'
 import CardListItem from '../../components/list/CartListItem'
@@ -7,9 +7,12 @@ import Button from '../../components/form/Button'
 import { useAppDispatch, useAppSelector } from '../../hooks/useStore'
 import { Cart as CartData } from '../../@types/response/Cart'
 import mainDataSlice from '../../store/slice/mainDataSlice'
+import { useNavigation } from '@react-navigation/native'
+import { RootNavigationProps } from '../../navigation/RootNavigation'
 
 const Cart = () => {
-  const { total } = useAppSelector(state => state.rootReducer.cartReducer)
+  const { total,regularTotal,count} = useAppSelector(state => state.rootReducer.cartReducer)
+  const navigation = useNavigation<RootNavigationProps>()
   const { data ,refetch} = useGetCartQuery()
   const dispatch = useAppDispatch();
   const [updateCart] = useUpdateCartMutation()
@@ -29,7 +32,7 @@ const Cart = () => {
     await Promise.all([data?.map(item => deleteCart(item))])
     refetch()
     dispatch(mainDataSlice.success("Satın alma işlemi başarılı"))
-
+    navigation.navigate("ProductList")
   }
 
   return (
@@ -48,6 +51,8 @@ const Cart = () => {
       <Button
         buttonStyle={styles.button}
         textStyle={styles.textButton}
+        left={count > 1}
+        icon={<Text style={styles.regularPrice}>{regularTotal} TL</Text>}
         title={`${total} TL Satın Al`}
         onPress={() => handleBuy()}
       />
@@ -71,6 +76,14 @@ const styles = StyleSheet.create({
   textButton: {
     fontWeight: "500",
     fontSize: 16,
+  },
+  regularPrice: {
+    textDecorationLine: "line-through",
+    fontWeight: "500",
+    fontSize: 16,
+    textAlign: "center",
+    color: "lightgray",
+    marginRight: 10
   },
 })
 export default Cart
