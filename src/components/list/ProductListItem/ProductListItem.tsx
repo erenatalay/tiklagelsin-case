@@ -1,9 +1,9 @@
 import React, { FC } from 'react'
-import { Text, View } from '../theme/Theme'
+import { Text, View } from '../../theme/Theme'
 import { Image, StyleSheet, useColorScheme } from 'react-native'
-import { Product } from '../../@types/response/Products'
-import Colors from '../../constant/Colors'
-import Button from '../form/Button/Button'
+import { Product } from '../../../@types/response/Products'
+import Colors from '../../../constant/Colors'
+import Button from '../../form/Button/Button'
 
 interface ProductListItemProps {
     item: Product
@@ -13,7 +13,7 @@ interface ProductListItemProps {
 const ProductListItem: FC<ProductListItemProps> = ({ item ,onPress}) => {
     const color = useColorScheme() ?? "light"
     return (
-        <View style={[styles.container, { backgroundColor: Colors[color].productListItem }]}>
+        <View testID='product-list' style={[styles.container, { backgroundColor: Colors[color].productListItem }]}>
             <View style={[styles.cardContainer, { backgroundColor: Colors[color].productListItem }]}>
                 <Image source={{ uri: item.image }} style={[styles.image, { backgroundColor: Colors[color].productListItem }]} />
                 <View style={[styles.card, { backgroundColor: Colors[color].productListItem }]}>
@@ -23,6 +23,7 @@ const ProductListItem: FC<ProductListItemProps> = ({ item ,onPress}) => {
             </View>
 
             <Button
+                testID='add-cart-button'
                 title={`${item.price}TL Sepete Ekle`}
                 buttonStyle={styles.button}
                 textStyle={styles.buttonText}

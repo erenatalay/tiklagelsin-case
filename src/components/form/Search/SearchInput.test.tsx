@@ -1,15 +1,17 @@
 import React from 'react';
-import { render, fireEvent } from '@testing-library/react-native';
+import { render, fireEvent, screen } from '@testing-library/react-native';
 import SearchInput from './SearchInput';
-describe('Input component tests', () => {
+describe('search input unit tests', () => {
     it('is rendered correctly', () => {
-        expect(<SearchInput
-            placeholder="Enter text"
-        />
-        ).toMatchSnapshot();
+        render(
+            <SearchInput
+            />);
+
+        const componentElement = screen.getByTestId('searchbar-input');
+        expect(componentElement).toBeDefined();
     });
 
-    it('should trigger Password when typed', () => {
+    it('should trigger search when typed', () => {
         const mockSearch = jest.fn();
         const wrapper = render(
             <SearchInput
@@ -21,5 +23,7 @@ describe('Input component tests', () => {
         fireEvent(input, 'onChangeText', 'test');
         expect(mockSearch).toHaveBeenCalled();
     });
+
 });
+
 

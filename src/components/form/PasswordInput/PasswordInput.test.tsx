@@ -1,16 +1,19 @@
 import React from 'react';
-import { render, fireEvent } from '@testing-library/react-native';
+import { render, fireEvent, screen } from '@testing-library/react-native';
 import PasswordInput from './PasswordInput';
 describe('Input component tests', () => {
     it('is rendered correctly', () => {
-        expect(<PasswordInput
+        render(
+            <PasswordInput
             name="inputName"
             placeholder="Enter text"
             changeText={() => null}
             blur={() => null}
 
-        />
-        ).toMatchSnapshot();
+        />);
+        const componentElement = screen.getByTestId('password-input');
+        expect(componentElement).toBeDefined();
+   
     });
 
     it('should trigger Password when typed', () => {

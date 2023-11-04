@@ -1,16 +1,18 @@
 import React from 'react';
 import Input from './Input';
-import { render, fireEvent } from '@testing-library/react-native';
+import { render, fireEvent, screen } from '@testing-library/react-native';
 describe('Input component tests', () => {
     it('is rendered correctly', () => {
-        expect(<Input
+        render(
+            <Input
             name="inputName"
             placeholder="Enter text"
             changeText={() => null}
             blur={() => null}
 
-        />
-        ).toMatchSnapshot();
+        />);
+        const componentElement = screen.getByTestId('text-input');
+        expect(componentElement).toBeDefined();
     });
 
     it('should trigger input when typed', () => {

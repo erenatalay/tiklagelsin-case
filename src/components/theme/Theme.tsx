@@ -32,17 +32,17 @@ export function Text(props: TextProps) {
     const { style, lightColor, darkColor, ...otherProps } = props;
     const color = useThemeColor({ light: lightColor, dark: darkColor }, 'text');
 
-    return <DefaultText style={[{ color }, style]} {...otherProps} />;
+    return <DefaultText testID='theme-text' style={[{ color }, style]} {...otherProps} />;
 }
 
 export function View(props: ViewProps) {
     const { style, lightColor, darkColor, ...otherProps } = props;
     const backgroundColor = useThemeColor({ light: lightColor, dark: darkColor }, 'background');
-    return <DefaultView style={[{ backgroundColor }, style]} {...otherProps} />;
+    return <DefaultView testID='theme-view' style={[{ backgroundColor }, style]} {...otherProps} />;
 }
 
 export function SafeAreaView(props: ViewProps) {
     const { style, lightColor, darkColor, ...otherProps } = props;
     const backgroundColor = useThemeColor({ light: lightColor, dark: darkColor }, 'background');
-    return <DefaultSafeAreaView style={[{ backgroundColor }, style]} {...otherProps} />;
+    return <DefaultSafeAreaView  testID='theme-safeareaview' style={[{ backgroundColor }, style]} {...otherProps} />;
 }

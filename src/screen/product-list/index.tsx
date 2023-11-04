@@ -3,7 +3,7 @@ import { SafeAreaView, Text, View } from '../../components/theme/Theme'
 import SearchInput from '../../components/form/Search/SearchInput'
 import { FlatList, StyleSheet } from 'react-native'
 import { useGetProductsQuery } from '../../store/api/products'
-import ProductListItem from '../../components/list/ProductListItem'
+import ProductListItem from '../../components/list/ProductListItem/ProductListItem'
 import { Product } from '../../@types/response/Products'
 import { useAddCartMutation, useGetCartQuery, useUpdateCartMutation } from '../../store/api/cart'
 

@@ -1,9 +1,9 @@
 import React, { FC } from 'react'
-import { Text, View } from '../theme/Theme'
+import { Text, View } from '../../theme/Theme'
 import { Image, StyleSheet, useColorScheme } from 'react-native'
-import Colors from '../../constant/Colors'
-import IconButton from '../form/IconButton/IconButton'
-import { Cart } from '../../@types/response/Cart'
+import Colors from '../../../constant/Colors'
+import IconButton from '../../form/IconButton/IconButton'
+import { Cart } from '../../../@types/response/Cart'
 
 interface ProductListItemProps {
     item: Cart
@@ -14,7 +14,7 @@ interface ProductListItemProps {
 const CardListItem: FC<ProductListItemProps> = ({ item,increment,decrement }) => {
     const color = useColorScheme() ?? "light"
     return (
-        <View style={[styles.container, { backgroundColor: Colors[color].productListItem }]}>
+        <View testID='cart-list' style={[styles.container, { backgroundColor: Colors[color].productListItem }]}>
             <View style={[styles.cardContainer, { backgroundColor: Colors[color].productListItem }]}>
                 <Image source={{ uri: item.image }} style={[styles.image, { backgroundColor: Colors[color].productListItem }]} />
                 <View style={[styles.card, { backgroundColor: Colors[color].productListItem }]}>
@@ -24,6 +24,7 @@ const CardListItem: FC<ProductListItemProps> = ({ item,increment,decrement }) =>
             </View>
             <View style={[styles.action,{ backgroundColor: Colors[color].productListItem }]}>
                 <IconButton
+                    testID='plus-button'
                     name={"plus"}
                     size={20}
                     color={"black"}
@@ -32,6 +33,7 @@ const CardListItem: FC<ProductListItemProps> = ({ item,increment,decrement }) =>
                 />
                 <Text style={styles.quantity}>{item.quantity} Adet</Text>
                 <IconButton
+                    testID='minus-button'
                     name={"minus"}
                     size={20}
                     color={"black"}
