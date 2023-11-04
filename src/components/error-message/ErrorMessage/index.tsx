@@ -9,8 +9,8 @@ import {
 } from 'react-native';
 import { TouchableHighlight } from 'react-native-gesture-handler';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import { useAppDispatch, useAppSelector } from '../../hooks/useStore';
-import mainDataSlice from '../../store/slice/mainDataSlice';
+import { useAppDispatch, useAppSelector } from '../../../hooks/useStore';
+import mainDataSlice from '../../../store/slice/mainDataSlice';
 export interface ToastProps {
     icon?: React.ReactNode;
     text: string;
@@ -43,7 +43,7 @@ const GlobalToast: FC = ({ children }: any) => {
     },[toast])
 
     return (
-        <>
+        <View testID='global-toast'>
             {toast ? (
                 <SafeAreaView
                     pointerEvents="none"
@@ -60,7 +60,7 @@ const GlobalToast: FC = ({ children }: any) => {
                 </SafeAreaView>
             ) : null}
             {children}
-        </>
+        </View>
     );
 };
 
