@@ -18,14 +18,14 @@ yarn install
 
 After installing the dependencies, use the following commands:
 
+Start Json Server
+yarn json-server
+
 Start the local server:
 yarn start
 
 Launch on Android:
 yarn android
-
-Start Json Server
-yarn json-server
 
 Run Tests
 yarn test

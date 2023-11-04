@@ -65,22 +65,5 @@
       "image": "https://cdn.yemek.com/mnresize/1250/833/uploads/2019/06/cheeseburger-one-cikan-yemekcom.jpg"
     }
   ],
-  "cart": [
-    {
-      "id": 6,
-      "name": "McChicken Deluxe",
-      "price": 18,
-      "description": "Domates, salatalık, soğan, ketçap, mayonez, hardal, peynir, köfte, ekmek",
-      "image": "https://cdn.yemek.com/mnresize/1250/833/uploads/2019/06/cheeseburger-one-cikan-yemekcom.jpg",
-      "quantity": 1
-    },
-    {
-      "id": 5,
-      "name": "McChicken",
-      "price": 15,
-      "description": "Domates, salatalık, soğan, ketçap, mayonez, hardal, peynir, köfte, ekmek",
-      "image": "https://cdn.yemek.com/mnresize/1250/833/uploads/2019/06/cheeseburger-one-cikan-yemekcom.jpg",
-      "quantity": 1
-    }
-  ]
+  "cart": []
 }
