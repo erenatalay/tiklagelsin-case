@@ -8,7 +8,8 @@
     "ios": "expo start --ios",
     "web": "expo start --web",
     "json-server": "json-server --watch ./data/db.json",
-    "test": "jest"
+    "test": "jest",
+    "adb": "adb reverse tcp:3000 tcp:3000"
   },
   "dependencies": {
     "@react-native-async-storage/async-storage": "^1.19.4",
