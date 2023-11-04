@@ -9,11 +9,12 @@ import { Cart as CartData } from '../../@types/response/Cart'
 import mainDataSlice from '../../store/slice/mainDataSlice'
 import { useNavigation } from '@react-navigation/native'
 import { RootNavigationProps } from '../../navigation/RootNavigation'
+import EmptyCard from '../../components/card/EmptyCart/EmptyCart'
 
 const Cart = () => {
-  const { total,regularTotal,count} = useAppSelector(state => state.rootReducer.cartReducer)
+  const { total, regularTotal, count } = useAppSelector(state => state.rootReducer.cartReducer)
   const navigation = useNavigation<RootNavigationProps>()
-  const { data ,refetch} = useGetCartQuery()
+  const { data, refetch } = useGetCartQuery()
   const dispatch = useAppDispatch();
   const [updateCart] = useUpdateCartMutation()
   const [deleteCart] = useDeleteCartMutation()
@@ -46,9 +47,15 @@ const Cart = () => {
             decrement={() => handleDecrement(item)}
             item={item} />
         )}
+        ListEmptyComponent={
+          <EmptyCard
+            onPress={() => navigation.navigate("ProductList")}
+
+          />
+        }
       />
 
-      <Button
+      {count !== 0 && <Button
         buttonStyle={styles.button}
         textStyle={styles.textButton}
         left={count > 1}
@@ -56,7 +63,7 @@ const Cart = () => {
         title={`${total} TL Satın Al`}
         onPress={() => handleBuy()}
       />
-
+      }
     </SafeAreaView>
   )
 }
