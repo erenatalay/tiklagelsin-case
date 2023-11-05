@@ -13,7 +13,6 @@ To run the project, use the following commands:
 
 To run the project, start by installing the project dependencies using Yarn:
 
-![plot](/app-in-image/login.png)
 ```bash
 yarn install
 
@@ -33,6 +32,11 @@ yarn test
 
 Reverse local server with ADB For Android:
 yarn adb
+``````
+![](./app-in-image/login.png)
+![](./app-in-image/productlist.png)
+![](./app-in-image/emptycart.png)
+![](./app-in-image/cart.png)
 
 
 
