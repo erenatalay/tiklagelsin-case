@@ -33,10 +33,10 @@ yarn test
 Reverse local server with ADB For Android:
 yarn adb
 ```
-[<img src="./app-in-image/login.png" width="250"/>](image.png)
-![](./app-in-image/productlist.png?s=300)
-![](./app-in-image/emptycart.png?s=300)
-![](./app-in-image/cart.png?s=300)
+[<img src="./app-in-image/login.png" width="250"/>](./app-in-image/login.png)
+[<img src="./app-in-image/productlist.png" width="250"/>](./app-in-image/productlist.png)
+[<img src="./app-in-image/emptycart.png" width="250"/>](./app-in-image/emptycart.png)
+[<img src="./app-in-image/cart.png" width="250"/>](./app-in-image/cart.png)
 
 
 
