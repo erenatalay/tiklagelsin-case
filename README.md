@@ -32,6 +32,8 @@ yarn test
 
 Reverse local server with ADB For Android:
 yarn adb
+``
+![Alternatif Metin](./app-in-image/login.png)
 
 
 
