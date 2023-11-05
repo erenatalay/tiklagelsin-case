@@ -13,6 +13,8 @@ To run the project, use the following commands:
 
 To run the project, start by installing the project dependencies using Yarn:
 
+![Alternatif Metin](./app-in-image/login.png)
+
 ```bash
 yarn install
 
@@ -32,8 +34,6 @@ yarn test
 
 Reverse local server with ADB For Android:
 yarn adb
-``
-![Alternatif Metin](./app-in-image/login.png)
 
 
 
