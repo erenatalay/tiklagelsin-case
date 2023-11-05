@@ -43,7 +43,7 @@ const GlobalToast: FC = ({ children }: any) => {
     },[toast])
 
     return (
-        <View testID='global-toast'>
+        <>
             {toast ? (
                 <SafeAreaView
                     pointerEvents="none"
@@ -60,7 +60,7 @@ const GlobalToast: FC = ({ children }: any) => {
                 </SafeAreaView>
             ) : null}
             {children}
-        </View>
+        </>
     );
 };
 
