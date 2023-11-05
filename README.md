@@ -13,8 +13,7 @@ To run the project, use the following commands:
 
 To run the project, start by installing the project dependencies using Yarn:
 
-![Alternatif Metin](./app-in-image/login.png)
-
+![plot](/app-in-image/login.png)
 ```bash
 yarn install
 
